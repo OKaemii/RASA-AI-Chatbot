@@ -1,0 +1,53 @@
+<!-- Author: 2327846P - Veronika -->
+
+<!DOCTYPE html>
+{% extends 'seanWebapp/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{% static 'css/manageResources.css' %}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+	SEAN Public Resources
+{% endblock %}
+
+{% block textblock %}
+	<div class="left_sidebar_text">
+		<strong>About:</strong><br>
+		This is the public resources page.<br>
+		<br>
+		<strong>Help:</strong><br>
+		You can view all resources relating to the Social and Public Policy courses and general university information here.<br>
+		To view a file simpley click on the resource name and it will be downloaded to your machine.
+	</div>
+{% endblock %}
+
+{% block main_panel %}
+	<div class="table_container">
+		{% if resources %}
+			<table class="table table-striped">
+				<tbody>
+        	            {% for resource in resources %}
+            	            <tr>
+                	            <th> <a href="{% url 'viewResource' resource_slug=resource.slug %}" role="button">{{ resource.name }}</a></th>
+    	                    </tr> 
+        	            {% endfor %}
+            	    </tbody>
+			</table>
+		{% else %}
+			<strong>There are no resources.</strong>
+		{% endif %}
+
+		<div class="pages">
+			Page {{ resources.number }} / {{ resources.paginator.num_pages }}
+			<br>
+			{% if resources.has_previous %}
+				<a href="?page={{ resources.previous_page_number }}" type="button">Previous</a>
+			{% endif %}
+			{% if resources.has_next %}
+    	        <a href="?page={{ resources.next_page_number }}" type="button"> Next </button> </a>
+        	{% endif %}
+		</div>
+	</div>
+{% endblock %}

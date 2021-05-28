@@ -1,0 +1,19 @@
+/* Author: 2327846P - Veronika */
+
+.error_container {
+	position: absolute;
+	left: 25%;
+	top: 20%;
+	right: 25%;
+	bottom: 20%;
+}
+
+.melted_logo {
+	position: absolute;
+	left: 0%;
+	top: 30%;
+	right: 10%;
+	bottom: 10%;
+	height: 70%;
+	width: auto;
+}

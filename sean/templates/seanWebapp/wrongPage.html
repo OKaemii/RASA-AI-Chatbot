@@ -1,0 +1,33 @@
+<!-- Author: 2327846P - Veronika -->
+
+<!DOCTYPE html>
+{% extends 'seanWebapp/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{% static 'css/wrongPage.css' %}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+	SEAN Staff Login
+{% endblock %}
+
+{% block textblock %}
+	<div class="left_sidebar_text">
+		<strong>About:</strong><br>
+		Well, this is embarassing...<br>
+		<br>
+		It seems something went wrong with our web app. We are very sorry about this.<br>
+		<br>
+		<strong>Help:</strong><br>
+		Should this be a serious issue, please <a href="mailto:seanchatbot@gmail.com">email us</a> with a description of what happened.<br>
+		We will try to resolve the issue as soon as possible.
+	</div>
+{% endblock %}
+
+{% block main_panel %}
+	<div class="error_container">
+		<h1>404 ERROR: Page not found!</h1>
+		<img src="{% static 'images/custom_logo_melt.png' %}" alt="Melted SEAN logo" class="melted_logo">
+	</div>
+{% endblock %}

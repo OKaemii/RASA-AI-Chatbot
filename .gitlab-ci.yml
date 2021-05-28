@@ -1,0 +1,36 @@
+image: "ubuntu: 18.04"
+
+stages:
+    - build
+    - test
+
+build:
+  stage: build
+  script:
+    - echo "Building..."
+    - echo "${GIT_COMMIT}"
+
+install_dependencies:
+  stage: build
+  script:
+    - echo "Checking and installing dependencies..."
+    - sudo apt-get install -y python-dev python-pip
+    - python3 -m pip install -r requirements.txt
+
+
+rasa_script_tests:
+  stage: test
+  script:
+    - echo "Testing Rasa scripts..."
+    - python3 -m unittest discover scripts.tests
+
+django_tests:
+  stage: test
+  script:
+    - echo "Testing Django..."
+    - cd sean/
+    - python3 manage.py makemigrations seanWebapp
+    - python3 manage.py migrate seanWebapp
+    - coverage run --source='.' manage.py test seanWebapp
+    - echo "Django test coverage report:"
+    - coverage report -m

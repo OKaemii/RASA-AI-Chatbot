@@ -1,0 +1,35 @@
+<!-- Author: 2327846P - Veronika -->
+
+<!DOCTYPE html>
+{% extends 'seanWebapp/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{% static 'css/aboutUs.css' %}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+	SEAN About Us
+{% endblock %}
+
+{% block textblock %}
+	<div class="left_sidebar_text">
+		<strong>About:</strong><br>
+		This page tells you all about us - the SEAN development team.<br>
+		<br>
+		We appreciate your curiosity about the people behind the project!<br>
+		Hopefully it's not because you are annoied with us! ;)
+	</div>
+{% endblock %}
+
+{% block main_panel %}
+	<div class="about_container">
+		<h1>The SEAN Development Team</h1>
+		<br>
+		<p>
+			We are a group of five 3rd year Computing Science students from 2019/2020.<br>
+			<br>
+			The SEAN chatbot is the product of our year-long Team Project course, working with our client, Dr. Mark Wong.
+		</p>
+	</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+<!-- Author: 2327846P - Veronika -->
+
+<!DOCTYPE html>
+{% extends 'seanWebapp/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css" />
+{% endblock %}
+
+{% block title_block %}
+	SEAN Create Staff Profile
+{% endblock %}
+
+{% block textblock %}
+	<div class="left_sidebar_text">
+		<strong>About:</strong><br>
+		Here you can create a new account for a member of staff.<br>
+		<br>
+		<strong>Help:</strong><br>
+		The member of staff must have a unique staff ID (username).<br>
+		The member of staff will receive an email with a link they must click to confirm their account. They will subsequently be redirected to a page to change their password.
+	</div>
+{% endblock %}
+
+{% block main_panel %}
+	<div class="psswrdChange_container">
+		<h1>Create Staff Account</h1>
+		<br>
+		{% if registered == "success" %}
+			<strong>You have successfully created a staff profile.</strong><br>
+			<br>
+		{% endif %}
+		<form id="user_form" method="post" action="{% url 'createProfile' %}" enctype="multipart/form-data">
+			{% csrf_token %}
+
+			<!-- Display each form -->
+			<label>Username:</label>
+			<input id="user_form.username" type="text" name="username" placeholder="Username" required />
+			<label>Email:</label>
+			<input id="user_form.email" type="email" name="email" placeholder="Email" required />
+			{{ profile_form.as_p }}
+
+			<!-- Provide a button to click to submit the form. -->
+			<input type="submit" name="submit" value="Create" />
+		</form>
+	</div>
+	<a href="{% url 'staffHome' %}" role="button" class="back_button">Back</a>
+{% endblock %}

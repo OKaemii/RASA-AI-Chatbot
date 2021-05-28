@@ -1,0 +1,55 @@
+<!-- Author: 2327846P - Veronika -->
+
+<!DOCTYPE html>
+{% extends 'seanWebapp/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+	SEAN Staff Login
+{% endblock %}
+
+{% block textblock %}
+	<div class="left_sidebar_text">
+		<strong>About:</strong><br>
+		This is the staff login page.<br>
+		<br>
+		<strong>Help:</strong><br>
+		If you are a member of staff, you must have an account made for you by an admin.<br>
+		Once an account has been made for you, you will receive an email with an access link.<br>
+		<br>
+		If you do not have an account and feel like you should, please contact the head of Chool of Social and Public Policy to create one for you.
+	</div>
+{% endblock %}
+
+{% block main_panel %}
+	<div class="login_container">
+		<h1>Login to SEAN</h1>
+		<br>
+		<form id="login_form" method="post" action="{% url 'loginUser' %}">
+			{% csrf_token %}
+			<label>Username:</label>
+			<input type="text" name="username" placeholder="Username" />
+			<label>Password:</label>
+			<input type="password" name="password" placeholder="Password" />
+
+			{% if message == "disabled" %}
+			<p>
+				<strong>The account is disabled.</strong>
+				<br>
+			</p>
+			{% endif %}
+			{% if message == "invalid" %}
+			<p>
+				<strong>Invalid login details.</strong>
+				<br>
+			</p>
+			{% endif %}
+
+			<input type="submit" value="Login" />
+		</form>
+	</div>
+{% endblock %}

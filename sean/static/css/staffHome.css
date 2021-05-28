@@ -1,0 +1,29 @@
+/* Author: 2327846P - Veronika */
+
+.btn_container {
+    position: absolute;
+    left: 33%;
+    top: 28%;
+    right: 35%;
+    bottom: 30%;
+}
+
+.staff_button {
+    display: block;
+    min-width: 100%;
+    padding: 10px 10px;
+    margin: 5%;
+    background-color: #d18731;
+	border-radius: 8px;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.staff_button:hover {
+    color: black;
+    transform: scale(1.1);
+    text-decoration: none;
+}

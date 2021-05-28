@@ -1,0 +1,51 @@
+<!-- Author: 2327846P - Veronika -->
+
+<!DOCTYPE html>
+{% extends 'seanWebapp/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{% static 'css/help.css' %}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+	SEAN Help
+{% endblock %}
+
+{% block textblock %}
+	<div class="left_sidebar_text">
+		<strong>About:</strong><br>
+		This is the help page.<br>
+		<br>
+		Hopefully what confuses you will be answered here.<br>
+		Should there be any further questions you have concerning SEAN the chatbot, please <a href="mailto:seanchatbot@gmail.com">email us</a>. We will try to come back to you as soon as possible.<br>
+		<br>
+		<br>
+		Have a lovely day! :*
+	</div>
+{% endblock %}
+
+{% block main_panel %}
+	<div class="help_container">
+		<h1>Help!? I'm lost...</h1>
+		<br>
+		<p>
+			Hi! <br>
+			Welcome to SEAN - the School of Social and Public Policy Student Enquiry Asisstant.<br>
+			<br>
+			In order to use it, go to the home/chat page (click the SEAN logo) and type your question into the textbox - works just like messenger! (With the slight difference of talking to a bot ;) )<br>
+			<br>
+			Log information on the chat is stored anonymously, and used for analyses and further chatbot improvement. We only store/send information when sending an email on your behalf when you fill out a form - SEAN will remind you of this though!<br>
+			<br>
+			If the chatbot is not able to help you with your enquiry, we recommend looking at the resources provided by the school (the resources link in the navigation panel will guide you there), or emailing a professor. This chatbot is meant to minimize the need to do so, but we understand the limitations of our solution.<br>
+			<br>
+			Should the chatbot offend or disturb you in any way, we are very sorry - he has a bit of a personality...<br>
+			<br>
+			If you are curious about how SEAN came to be, check out the <a href="/sean/about_us/">about us</a> page!<br>
+			<br>
+			<br>
+			Have fun talking to SEAN, and hope he is of help!<br>
+			SEAN development team
+		</p>
+	</div>
+{% endblock %}

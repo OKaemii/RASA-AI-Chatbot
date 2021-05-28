@@ -1,0 +1,30 @@
+<!-- Author: 2327846P - Veronika -->
+
+<!DOCTYPE html>
+{% extends 'seanWebapp/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{% static 'css/wrongPage.css' %}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+	SEAN Staff Login
+{% endblock %}
+
+{% block textblock %}
+	<div class="left_sidebar_text">
+		<strong>About:</strong><br>
+		We are sorry, but it seems you do not have the permission to enter this page.<br>
+		<br>
+		<strong>Help:</strong><br>
+		Should you require to access this page, please contact the admin to add the necessary permission to your account.
+	</div>
+{% endblock %}
+
+{% block main_panel %}
+	<div class="error_container">
+		<h1>404 ERROR: You are not permitted to enter this page!</h1>
+		<img src="{% static 'images/custom_logo_melt.png' %}" alt="Melted SEAN logo" class="melted_logo">
+	</div>
+{% endblock %}

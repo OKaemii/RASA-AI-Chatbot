@@ -1,0 +1,46 @@
+<!-- Author: 2327846P - Veronika -->
+
+<!DOCTYPE html>
+{% extends 'seanWebapp/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+	SEAN Edit Resource
+{% endblock %}
+
+{% block textblock %}
+	<div class="left_sidebar_text">
+		<strong>About:</strong><br>
+		Here you may edit a resource - replace the file, change the name or delete the resource overall.<br>
+		<br>
+		<strong>Help:</strong><br>
+		Please ensure that the name of the resource is unique and clearly states what the file contains, in order for students to find information easier as well.<br>
+		<br>
+		If you are only planning on replacing the file, please retype the name of the file (will be a placeholder in the input box) in the input box.<br>
+	</div>
+{% endblock %}
+
+{% block main_panel %}
+	<div class="login_container">
+		<h1>Edit resource {{ resource.name }}</h1>
+		<br>
+		{% if message == "success" %}
+			<strong>You have successfully editted this resource.</strong><br>
+			<br>
+		{% endif %}
+		<form id="edit_form" method="post" action="{% url 'editResource' resource.slug %}" enctype="multipart/form-data">
+			{% csrf_token %}
+			<label>File name:</label>
+			<input type="text" name="name" placeholder="File name" required />
+			<label>File:</label>
+			<input type="file" name="file"><br>
+			<br>
+			<input type="submit" value="Apply" />
+		</form>
+	</div>
+	<a href="{% url 'manageResources' %}" role="button" class="back_button">Back</a>
+{% endblock %}

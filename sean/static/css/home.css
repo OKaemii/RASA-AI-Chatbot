@@ -1,0 +1,68 @@
+/* Author: 2391564V - Charles */
+
+#messages {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    bottom: 12.5%;
+    right: 0%;
+    overflow-y: auto;
+    padding-top: 1%;
+}
+
+#message-input {
+    position: absolute;
+    top: 90%;
+    left: 0%;
+    bottom: 0%;
+    right: 0%;
+    background-color: #c4c4c4;
+}
+ 
+.round-colour-image {
+    width: 2vw;
+    height: 2vw;
+    border-radius: 10vw;
+    object-fit: cover;
+    background-color: #d18731;
+    margin-left: 1.3%;
+}
+
+.message-user, .message-rasa {
+    width: 50%;
+    border-radius: 20px;
+    padding: 1vh 1vw 1vh 1vw;
+    display: inline-block;
+    margin-bottom: 0.7%;
+    word-wrap: break-word;
+}
+
+.message-rasa {
+    background-color: #f6ca93;
+    color: #342a09;
+    margin-left: 1%;
+}
+
+.message-user {
+    background-color: #c4c4c4;
+    color: #343434;
+    margin-left: 45%;
+}
+
+input[type=text] {
+    position: absolute;
+    top: 20%;
+    left: 1%;
+    width: 90.5%;
+    height: 15%;
+    padding: 10px;
+    border-radius: 3vw;
+    border: none;
+    overflow-y: auto;
+}
+
+input[type=image] {
+    position: absolute;
+    top: 20%;
+    left: 94.3%;
+}

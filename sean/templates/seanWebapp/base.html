@@ -1,0 +1,55 @@
+<!-- Co-Author: 2391564V - Charles  -->
+<!-- Co-Author: 2327846P - Veronika -->
+<!DOCTYPE html>
+ 
+{% load static %}
+
+<html>
+ 	<head lang="en">
+ 		<meta charset="UTF-8" />
+ 		<title>
+            {% block title %}
+ 			{% endblock %}
+        </title>
+        <!-- Global Stylesheet -->
+		<link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" />
+		{% block stylesheets %}
+		{% endblock %}
+    </head>
+ 	<body class="body">
+ 		<div class="left_sidebar_section">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/full_custom_logo.png' %}" alt="SEAN logo" class="sean_logo">
+            </a>
+ 			{% block textblock %}
+ 			{% endblock %}
+ 			<div class="navbar_container w-container">
+                <a href="{% url 'home' %}" role="button">Home</a>
+                <a href="{% url 'publicResources' %}">Resources</a>
+
+                {% if user.is_authenticated %}
+                    <a href="{% url 'staffHome' %}" role="button">Staff Room</a>
+                    <a href="{% url 'changePassword' %}">Change Password</a>
+                    <a href="{% url 'logoutUser' %}" role="button">Logout</a>
+                {% else %}
+                    <a href="{% url 'loginUser' %}" role="button">Staff Login</a>
+                {% endif %}
+ 			</div>
+ 			<a href="https://www.gla.ac.uk/undergraduate/degrees/publicpolicy/">
+                <img src="{% static 'images/uni_of_glasgow.png' %}" alt="UofG logo" class="uni_logo">   
+            </a>
+ 		</div>
+ 		<div class="main_panel_section">
+ 			{% block main_panel %}
+ 			{% endblock %}
+ 		</div>
+ 		<div class="right_sidebar_container w-container">
+            <a href="/sean/settings/">
+                <img src="{% static 'images/gear.png' %}" alt="settings" class="settings_img">
+            </a>
+            <a href="/sean/help/">
+                <img src="{% static 'images/help.png' %}" alt="help" class="help_img">
+            </a>
+ 		</div>
+ 	</body>
+</html>

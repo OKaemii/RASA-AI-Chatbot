@@ -1,0 +1,76 @@
+<!-- Author: 2391564V - Charles -->
+<!DOCTYPE html>
+
+{% extends 'seanWebapp/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+{% endblock %}
+
+{% block textblock %}
+    <div class="left_sidebar_text">
+        Welcome to SEAN - the Social and Public Policy Student Enquiry Assisstant.<br>
+        <br>
+        <strong>Help:</strong><br>
+        Just write your question/comment in the textbox and send it over - works like messenger! Our chatbot will hopefully be able to help you with your issue :)<br>
+        <br>
+        <strong>Disclaimer:</strong><br>
+        The conversation you are having is saved anonymously for statistical and chatbot improvement purposes. By using this website you give your consent for us to do so. Should you wish for the conversation data to be removed, please email <a href="mailto:seanchatbot@gmail.com">email us</a>.
+    </div>
+{% endblock %}
+
+{% block main_panel %}
+    <!-- Message Panel -->
+    <div id="messages" class="mt-2">
+        {% for type, message in conversation %}
+            <div>
+                {% if type == "user" %}
+                    <text class="message-user">{{ message }}</text>
+                {% elif type == "image" %}
+                    <img class="round-colour-image" src="{% static 'images/custom_logo_inv.png' %}" alt="sean-icon" />
+                    <img class="message-rasa" src="{{ message }}" />
+                {% else %}
+                    <img class="round-colour-image" src="{% static 'images/custom_logo_inv.png' %}" alt="sean-icon" />
+                    <text class="message-rasa">{{ message }}</text>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <div id="message-input" class="py-2 m-0">
+        <form method='POST'>
+            {% csrf_token %}
+            <input type="text" name="message">
+            <input class="round-colour-image float-right ml-0" type="image" src="{% static 'images/send.png' %}" value="Submit">
+        </form>
+    </div>
+    
+    <!-- JavaScript to scroll chat windown to bottom by default -->
+    <script>
+        var msg_win = document.getElementById("messages");
+        msg_win.scrollTop = msg_win.scrollHeight;
+    </script>
+    
+    <!-- AJAX script to send message and update conversation without reloading -->
+    <!--<script type="text/javascript">
+        $(document).on('submit', '#message-input', function(e) {
+            e.preventDefault(); // Prevent form from being submitted
+            $.ajax({
+                type: 'POST',
+                url: '/sendmessage/',
+                data: {
+                    message: $('input[name$="message"]').val(),
+                },
+                done:function() {
+                    alert("Great success!");
+                }
+            });
+        });
+    </script>-->
+{% endblock %}

@@ -1,0 +1,40 @@
+<!-- Author: 2327846P - Veronika -->
+
+<!DOCTYPE html>
+{% extends 'seanWebapp/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{% static 'css/staffHome.css' %}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+	Staff Home
+{% endblock %}
+
+{% block textblock %}
+	<div class="left_sidebar_text">
+		<strong>About:</strong><br>
+		This is the staff home page.<br>
+		Depending on the permissions you have received, you will have access to certain pages.<br>
+		<br>
+		<strong>Help:</strong><br>
+		Should you have no options showing on screen, you have not received any permissions from the admin who created your account.
+	</div>
+{% endblock %}
+
+{% block main_panel %}
+	<div class="btn_container">
+		<h1>Staff Home</h1>
+		<br>
+		{% if profile.add_users %}
+			<a href="{% url 'createProfile' %}" role="button" class="staff_button">Create New Staff Profile</a>
+		{% endif %}
+		{% if profile.manage_resources %}
+			<a href="{% url 'manageResources' %}" role="button" class="staff_button">Manage Resources</a>
+		{% endif %}
+		{% if profile.manage_logs %}
+			<a href="{% url 'searchLogs' %}" role="button" class="staff_button">Logs</a>
+		{% endif %}
+	</div>
+{% endblock %}

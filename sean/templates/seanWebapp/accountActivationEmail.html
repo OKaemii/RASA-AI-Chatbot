@@ -1,0 +1,11 @@
+<!-- Author: 2327846P - Veronika -->
+
+{% autoescape off %}
+
+	Hi {{ user.username }},
+	A SEAN chatbot staff account has been created for you. Please click the link below to activate your account:
+	http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+	Thank you,
+	SEAN
+
+{% endautoescape %}

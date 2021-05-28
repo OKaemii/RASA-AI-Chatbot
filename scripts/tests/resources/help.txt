@@ -1,0 +1,18 @@
+(Charles) In order for the chatbot to run custom actions..
+   run rasa action server with: rasa run action
+   open a new terminal
+   run the chatbot server with: rasa shell
+
+(Charles) In order to restart the action server..
+   Ctrl+C to cancel the server process
+   terminate server process with: kill $(lsof -t -i:5055)
+   run action server again
+   
+(Charles) To stop a process using a port number..
+    discover process' id: lsof -i :<port number>
+    kill process: kill -9 <process id>
+
+(Fahad) In order to use the rasaAPI.py...
+    rasa run -m models --enable-api --log-file out.log
+    rasa run actions
+

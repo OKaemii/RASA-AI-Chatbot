@@ -1,0 +1,147 @@
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - test_hello
+  - test_file
+  - open_file
+  - ask_study
+  - thanked
+  - give_course
+  - ask_issue
+  - mentalhealth
+  - duration
+  - turnitin
+  - difficulties
+  - extension
+  - physicalhealth
+  - medical_evidence
+  - goodcause
+  - ask_turnitin_acceptable_rate
+  - academicsources
+  - ask_external_academicsources_confirmation
+  - ask_essay_submission  
+  - ask_essay_reference_help
+  - ask_enrollment
+  - course_approval
+  - ask_books_purchasing
+
+entities:
+  - course
+  - issue
+  - duration
+  - turnitin
+  
+slots:
+  files:
+    type: list
+  file:
+    type: text
+  course:
+    type: text
+  duration:
+    type: float
+    min_value: 0.0
+    max_value: 30.0
+  issue:
+    type: list
+  turnitin:
+    type: float
+    min_value: 0.0
+    max_value: 100.0
+    
+forms:
+  - file_form
+  - course_issue_form
+    
+actions:
+  - utter_greet
+  - utter_cheer_up
+  - utter_did_that_help
+  - utter_happy
+  - utter_sad
+  - utter_goodbye
+  - utter_iamabot
+  - utter_slots_file
+  - utter_submit
+  - utter_appreciation
+  - utter_appoint_intlexof
+  - utter_thank
+  - utter_thank_course
+  - utter_ask_extension_length
+  - utter_mentalhealth_confirmation
+  - utter_reassurance
+  - utter_medical_confirmation
+  - utter_good_cause
+  - utter_appoint_courseconvenor
+  - utter_aboutpurchasingbooks
+  - utter_external_academicsources_confirmation
+  - utter_appoint_susanna
+  - utter_nothreshold
+  - utter_hopeyoufeelbetter
+  - action_hello_world
+  - action_search_files
+  - action_open_file
+  - action_course_issue
+  - action_course
+  - action_find_extension_details
+  - action_academicsources_requirements
+  - action_find_referencehelp
+  - action_reset
+
+templates:
+  utter_greet:
+  - text: Hey! How can I help? :)
+  utter_cheer_up:
+  - text: 'Here is so	mething to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: That's great to hear! Feel free to ask me another question :)
+  utter_sad:
+  - text: I'm sorry to hear I wasn't helpful. :( Please try again with different wording perhaps?
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_slots_file:
+  - text: "file_form ran with the following parameters:\n
+          - file: {file}"
+  utter_submit:
+  - text: Submitting form.
+  utter_appreciation:
+  - text: yes, yes, very good
+  utter_appoint_intlexof:
+  - text: Go to the International Executive Office
+  utter_thank:
+  - text: Thank you!
+  utter_thank_course:
+  - text: Thank you for showing interest in the {course} course. How can I help you with this?
+  utter_ask_extension_length:
+  - text: How long would you like the extension to be?
+  utter_mentalhealth_confirmation:
+  - text: It seems that perhaps you are suffering from mental issues.
+  utter_reassurance:
+  - text: It's okay. Do not worry.
+  utter_medical_confirmation:
+  - text: Could I confirm your medical details?
+  - text: is the issue {issue}?
+  utter_good_cause:
+  - text: What is your good cause?
+  utter_appoint_courseconvenor:
+  - text: Go to the course convenor
+  utter_aboutpurchasingbooks:
+  - text: About purchasing books.
+  utter_external_academicsources_confirmation:
+  - text: are these the external academic sources you are looking for?
+  utter_appoint_susanna:
+  - text: Go to Susanna.
+  utter_nothreshold:
+  - text: So it's {turnitin} amount, right?
+  utter_hopeyoufeelbetter:
+  - text: I hope you feel better.

@@ -1,0 +1,17 @@
+# This is a .gitignore file
+
+# Compiled python
+*.pyc
+/__pycache__
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+*.dbsqlite3
+models/
+*.tar.gz
+
+# Compiled documents
+*.pdf
+*.ps

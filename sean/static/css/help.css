@@ -1,0 +1,26 @@
+/* Author: 2327846P - Veronika */
+
+.help_container {
+	position: absolute;
+	left: 20%;
+	top: 15%;
+	right: 20;
+	bottom: 20%;
+	width: 60%;
+}
+
+.main_panel_section a {
+	color: black;
+	font-weight: bold;
+	transition-duration: 0.3s;
+}
+
+table a:visited {
+	color: black;
+}
+
+table a:hover, table a:active, table a:focus {
+	color: black;
+	text-decoration: underline;
+	transform: scale(1.3);
+}

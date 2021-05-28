@@ -1,0 +1,60 @@
+<!-- Author: 2327846P - Veronika -->
+
+<!DOCTYPE html>
+{% extends 'seanWebapp/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{% static 'css/manageResources.css' %}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    SEAN Manage Resources
+{% endblock %}
+
+{% block textblock %}
+    <div class="left_sidebar_text">
+    	<strong>About:</strong><br>
+        On this page you may add, replace or delete resources - files that are used to find information.<br>
+        <br>
+        Please ensure that the name of the file is informative, to assist students when looking through files.<br>
+        <br>
+        <strong>Help:</strong><br>
+        To view a resource, click its name in the table.<br>
+        To replace or delete a resource, click the relevant button in the resource's row.<br>
+        Deleting a resource is final; please take care when doing so.
+    </div>
+{% endblock %}
+
+{% block main_panel %}
+	<div class="table_container">
+		<a href="{% url 'addResource' %}" role="button" class="add_btn">Add Resource</a>
+		{% if resources %}
+			<table class="table table-striped">
+				<tbody>
+        	            {% for resource in resources %}
+            	            <tr>
+                	            <th style="width: 80%"> <a href="{% url 'viewResource' resource_slug=resource.slug %}" role="button">{{ resource.name }}</a></th>
+	                            <th style="width: 10%"> <button><a href="{% url 'editResource' resource_slug=resource.slug %}" class="table_btn" role="button" aria-pressed="true">Edit</a></button></th>
+	                            <th style="width: 10%"> <button><a href="{% url 'deleteResource' resource_slug=resource.slug %}" class="table_btn" role="button" aria-pressed="true">Delete</a></button></th>
+    	                    </tr> 
+        	            {% endfor %}
+            	    </tbody>
+			</table>
+		{% else %}
+			<strong>There are no resources.</strong>
+		{% endif %}
+
+		<div class="pages">
+			Page {{ resources.number }} / {{ resources.paginator.num_pages }}
+			<br>
+			{% if resources.has_previous %}
+				<a href="?page={{ resources.previous_page_number }}" type="button">Previous</a>
+			{% endif %}
+			{% if resources.has_next %}
+    	        <a href="?page={{ resources.next_page_number }}" type="button">Next</button> </a>
+        	{% endif %}
+		</div>
+	</div>
+	<a href="{% url 'staffHome' %}" role="button" class="back_button">Back</a>
+{% endblock %}

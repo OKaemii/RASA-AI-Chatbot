@@ -1,0 +1,46 @@
+<!-- Author: 2327846P - Veronika -->
+
+<!DOCTYPE html>
+{% extends 'seanWebapp/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+	SEAN Add Resource
+{% endblock %}
+
+{% block textblock %}
+	<div class="left_sidebar_text">
+		<strong>About:</strong><br>
+		Here you may add a resource for SEAN to glean information from, and for students to view.<br>
+		<br>
+		<strong>Help:</strong><br>
+		Please ensure that the name of the resource is unique and clearly states what the file contains, in order for students to find information easier as well.<br>
+		<br>
+		Please make sure to not duplicate files. It is possible to replace outdated files by clicking the edit button in the Manage Resources page.
+	</div>
+{% endblock %}
+
+{% block main_panel %}
+	<div class="login_container">
+		<h1>Add resource</h1>
+		<br>
+		{% if message == "success" %}
+			<strong>You have successfully added the resource: {{ resource.name }}.</strong><br>
+			<br>
+		{% endif %}
+		<form id="form" method="post" action="{% url 'addResource' %}" enctype="multipart/form-data">
+			{% csrf_token %}
+			<label>File name:</label>
+			<input type="text" name="name" placeholder="File name" required />
+			<label>File:</label>
+			<input type="file" name="file" required><br>
+			<br>
+			<input type="submit" value="Add" />
+		</form>
+	</div>
+	<a href="{% url 'manageResources' %}" role="button" class="back_button">Back</a>
+{% endblock %}

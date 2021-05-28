@@ -1,0 +1,58 @@
+<!-- Author: 2133861w - Andrew Wu -->
+<!-- Revamped: 2327846P - Veronika -->
+
+<!DOCTYPE html>
+{% extends 'seanWebapp/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'css/manageResources.css' %}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    SEAN Log Detail
+{% endblock %}
+
+{% block textblock %}
+    <div class="left_sidebar_text">
+        <strong>About:</strong><br>
+        This is the log {{ log.log_id }} detail page.<br>
+        Here you may view the contents of the conversation.<br>
+        <br>
+        <strong>Help:</strong><br>
+        Should you wish to delete a conversation, you may do so here. Please be aware that once deleted, a conversation cannot be recovered.
+    </div>
+{% endblock %}
+
+{% block main_panel %}
+    <div class="table_container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th> Log ID</th>
+                    <th> GUID </th>
+                    <th> Topic Discussed</th>
+                    <th> Conversation Time </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th> {{ log.log_id }} </th>
+                    <th> {{ log.guid }} </th>
+                    <th> {{ log.topic_discussed }} </th>
+                    <th> {{ log.conversation_time }} </th>
+                </tr> 
+            </tbody>
+        </table>
+        <br>
+        <h3>Conversation:</h3>
+        <p>
+        {% for message in messages %}
+            {{ message }}<br>
+        {% endfor %}
+        </p>
+    </div>
+    <a href="{% url 'searchLogs' %}" role="button" class="back_button">Back</a>
+    <a href="{% url 'deleteLog' log.slug %}" role="button" class="delete_btn">Delete</a>
+{% endblock %}
+    
